@@ -108,6 +108,12 @@ report 50100 CustomerCardBarCode
         end;
     }
 
+    var
+        QRCode: Text;
+        BarcodeURL: Text;
+        CustomerNo: Code[20];
+        CustomerName: Text[100];
+
     local procedure GenerateQRCode()
     var
         BarcodeSymbology2D: Enum "Barcode Symbology 2D";
@@ -118,12 +124,6 @@ report 50100 CustomerCardBarCode
         BarcodeSymbology2D := Enum::"Barcode Symbology 2D"::"QR-Code";
         QRCode := BarcodeFontProvider2D.EncodeFont(BarcodeURL, BarcodeSymbology2D);
     end;
-
-    var
-        QRCode: Text;
-        BarcodeURL: Text;
-        CustomerNo: Code[20];
-        CustomerName: Text[100];
 
     procedure AssignBarcodeURL(CustNo: Code[20]; CustName: text[100]; NewBarcodeURL: Text)
     begin
